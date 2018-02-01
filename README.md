@@ -11,7 +11,7 @@ Here, you will use Mixpanel and you will have an example to track them on their 
 - Log in to your [Mixpanel](https://mixpanel.com) account
 - Create a new project
 - You should see a JS code (`<!-- start Mixpanel -->...`). Include it just before the `</head>` tag of your HTML files
-- Include the following code in one of your JS file. It will track identify the user and track the duration on every click.
+- Include the following code in one of your JS file or in a new file `mixpanel.js` (that you will need to include in your HTML file). It will track identify the user and track the duration on every click.
 
 ```js
 // Start Mixpanel tracking
