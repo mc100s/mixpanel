@@ -4,7 +4,7 @@
 
 The goal of this tutorial is to track how much users you have on your website and how much time they spend on it.
 
-Here, you will use Mixpanel and you will have an example to track them on their click. 
+Here, you will use Mixpanel and you will have an example to track them on their click or keydown events.
 
 ## Steps to track users and the time they spend
 
@@ -35,16 +35,37 @@ try {
 catch (e) {
   console.log("CATCH", e);
 }
-mixpanel.time_event("Click"); // Start a chronometer for "Click"
-document.addEventListener('click', function() {
-  mixpanel.track("Click"); // Track "Click"
-  mixpanel.time_event("Click"); // Start a new chronometer for "Click"
-});
+mixpanel.time_event("Event"); // Start a chronometer for "Event"
+function mixpanelStopAndStart() {
+  mixpanel.track("Event"); // Track "Event"
+  mixpanel.time_event("Event"); // Start a new chronometer for "Event"
+}
+document.addEventListener('click', mixpanelStopAndStart);
+document.addEventListener('keydown', mixpanelStopAndStart);
 // End Mixpanel tracking
 ```
 
-- Go to Mixpanel > Activity Analysis (First navbar) > Segmentation (Second navbar). You should set the event `Click`, `SUM: Duration`, `BY mixpanelId`. Then you will see the total duration by each user. 
-![](https://i.imgur.com/2nS2kNf.png).
+- Go to Mixpanel and set up your dashboard like described below. Don't forget to click on "Show" button to refresh the data:
+    
+    - 1: In the first navbar, go to "Activity"
+    
+    - 2: In the second navbar, go to "Segmentation"
+    
+    - 3: Set the event `Event` 
+    
+    - 4: Filter on `Duration` that is `less than` `60` 
+    
+    - 5: `SUM` on `Duration` 
+    
+    - 6: Group `by` `mixpanelId` 
+    
+    - 7: Change the display to "Chart > Bar"
+    
+    - 8+: Click on the "Show" button every time you want to refresh the data!
+
+![](https://i.imgur.com/SCdSDfU.png).
+
+<!-- https://i.imgur.com/C4bgyqP.png -->
 
 
 ## Other tracking
